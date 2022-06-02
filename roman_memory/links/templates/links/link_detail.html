@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+{% block title %} Инфо о ссылке {{ note.id }}{% endblock  %}
+{% block content %}
+    <div class="features">
+        <h3> {{ links.title }} </h3>
+        <div class="notes_detail">
+            <br>
+            <img src="{{ links.image.url }}" style="width: 45rem;"><br>
+            <br>
+            <span> Дата публикации: {{ links.date }} </span><br>
+            <br>
+            <p> {{ links.text }} </p>
+            <a href="{{links.link}}"><button type="button" class="btn btn-info">Перейти</button></a><br>
+            <br>
+        </div>
+    <a href="{% url 'links_update' links.id %}" class="btn btn-info"><i class="bi bi-pen"></i> Изменить</a>
+    <a href="{% url 'links_delete' links.id %}" class="btn btn-danger"><i class="bi bi-trash3"></i> Удалить</a>
+    </div>
+{% endblock  %}

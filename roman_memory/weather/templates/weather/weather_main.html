@@ -1,0 +1,53 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Погода{% endblock  %}
+{% block content %}
+<br>
+    <h2 style="text-align: center; color: #802BB1; padding-left: 250px;" >Погода во всем мире! <i class="bi bi-emoji-smile-fill"></i></h2>
+<br>
+
+
+    <form method="post" action="" style="color: #D1D7E0; padding-left: 250px; margin-left: 50px; width: 100%">
+        {% csrf_token %}
+        <div class="row g-2" >
+            <div class="col-6">
+                {{ form.name }}
+            </div>
+            <div class="col-auto">
+                <button type="submit"  class="btn btn-info" style="height: 38px; margin-left: 10px;"
+                        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="Добавить город">
+                    <i class="bi bi-plus-circle"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <h4 style="text-align: center; color: #D1D7E0; padding-left: 250px;">История просмотров</h4>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center" style="padding-left: 290px; padding-right: 30px;">
+        {% for el in info %}
+        <div class="col">
+        <div class="card mb-4 rounded-3" style="background: #802BB1;">
+            <div class="card-header py-3" style="color: #D1D7E0;">
+                <h4 class="my-0 fw-normal"> {{ el.city }}</h4>
+            </div>
+            <div class="card-body" style="color: #2D283E; width:100%; padding: 1px; background: #D1D7E0; font-size: 30px;">
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>{{ el.temperature }} °C</li>
+                    <li>
+                        <img src="http://openweathermap.org/img/w/{{ el.icon }}.png" alt="Иконка погоды" class="img-thunbnail" style="height: 80px;">
+                    </li>
+                    <li style="text-align: center;">
+                        <button type="button" class="btn btn-dark" style="float: right;"> <i class="bi bi-dash-circle"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock  %}
+

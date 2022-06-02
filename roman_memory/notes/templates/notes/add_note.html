@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+{% block title %}Добавить запись{% endblock  %}
+{% block content %}
+    <div class="features">
+        <div class="title_notes"><h3>Введите свою запись</h3></div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.title }}<br>
+            {{ form.anons }}<br>
+            {{ form.full_text }}<br>
+            <span>{{ error }}</span>
+            <button class="btn btn-success" type="submit">Добавить запись</button>
+        </form>
+    </div>
+{% endblock  %}
+

@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+{% block title %}Изменение записи{% endblock  %}
+{% block content %}
+    <div class="features">
+        <div class="title_notes"><h3>Изменение</h3></div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.title }}<br>
+            {{ form.text }}<br>
+            {{ form.link }}<br>
+            {{ form.image }}<br>
+            <span>{{ error }}</span>
+            <button class="btn btn-success" type="submit">Сохранить изменения</button>
+        </form>
+    </div>
+{% endblock  %}

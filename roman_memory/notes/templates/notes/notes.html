@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+{% block title %}Записи{% endblock  %}
+{% block content %}
+    <div class="features">
+        <h3>Здесь я буду писать свои мысли </h3>
+        <a href="{% url 'add_note' %}" style="text-align: center;"><button class="btn btn-info">Добавить запись</button></a><br>
+        <br>
+        {% if notes %}
+            <div class="alert-title">
+            {% for notes in notes %}
+
+                <div class="alert alert-warning">
+                    <h5> {{ notes.title }}</h5>
+                    <p> {{ notes.anons}}</p>
+                    <p> {{ notes.date }} </p>
+                    <a href="{% url 'note_detail' notes.id %}" class="btn btn-warning">Подробнее</a><br>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p>Здесь будут появляться разные интересные тексты</p>
+        {% endif %}
+
+
+    </div>
+{% endblock  %}
+

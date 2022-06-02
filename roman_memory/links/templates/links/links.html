@@ -1,0 +1,40 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'links/css/links.css' %}">
+
+{% block title %}Ссылки{% endblock  %}
+{% block content %}
+
+
+    <div class="features">
+        <h3>Здесь разные интересные ссылки</h3>
+    <div class="links-container">
+        <div class="row">
+        {% for links in links %}
+        <div class="col-md-4">
+            <div class="card" >
+                <div class="card-body" >
+                <ul class="list-group list-group-flush" >
+                    <li class="list-group-item"><img src="{{ links.image.url }}" style="width: 100%;"></li>
+                    <li class="list-group-item "><h5 class="card-title">{{ links.title }}</h5></li>
+                    <li class="list-group-item"><div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="{{links.link}}"><button type="button" class="btn btn-info">Перейти</button></a>
+                            <a href="{% url 'links_detail' links.id %}"><button type="button" class="btn btn-secondary">Подробнее</button></a>
+                        </div></li>
+                </ul>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+        <div class="col-md-4" style="height: 50px;">
+            <div class="card" style="width: 18rem; height: 18rem; background: #999EA2;">
+                <a href="{% url 'add_link' %}"> <i class="bi bi-plus-circle" style="font-size: 180px; "></i>
+                </i></a>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+{% endblock  %}
+
